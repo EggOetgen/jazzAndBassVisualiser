@@ -20,7 +20,7 @@ class akAvBeat {
 
   void check() {
 
-    if ((fft.getFreq(freq)>thresh)&&(timeSinceLast>timeThresh)) { //checks if the amplitude of the frequency to be checked is above the threshold and it has been enough time since the last beat
+    if ((fftA.getFreq(freq)>thresh)&&(timeSinceLast>timeThresh)) { //checks if the amplitude of the frequency to be checked is above the threshold and it has been enough time since the last beat
       beatOn = true;
       timeOfLast = millis();
     } else { //at all time beatOn is false and the time since the last beat is recorded

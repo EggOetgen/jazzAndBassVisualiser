@@ -56,7 +56,7 @@ class Particle {
   }
   
   float findAlpha( float x){
-  float alpha_ = map(x, 0, 100, 20, 255);
+  float alpha_ = map(x, 0, 400, 20, 255);
   return alpha_;
   }
   

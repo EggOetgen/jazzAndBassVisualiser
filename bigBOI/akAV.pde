@@ -33,7 +33,7 @@ float h = 0; //the multiplier for the noise
 
 akAv() {
   
-   fft = new FFT(song.bufferSize(), song.sampleRate());
+   //fft = new FFT(song.bufferSize(), song.sampleRate());
   noStroke();
   
   //initalizing all the objects to detect various instruments in song
