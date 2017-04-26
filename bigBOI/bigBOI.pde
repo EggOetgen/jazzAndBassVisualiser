@@ -1,6 +1,10 @@
 import ddf.minim.*;
 import ddf.minim.ugens.*;
 import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+
 
 MyAudioSocket mySocket;
 int SWOTCH;
@@ -13,6 +17,11 @@ AudioOutput       out;
 EnvelopeFollower  envFol;
 FFT         fft;
 
+
+
+//AKHIL
+AudioPlayer akSong;
+akAv akhilAV;
 float spread;
 
 Particle bass;
@@ -98,7 +107,7 @@ void setup()
   smooth();
   SWOTCH = 0;
   context = new Minim(this);
-
+  
   in = context.getLineIn(Minim.MONO, 1024, 44100);
  // in.setGain(10); 
   in.disableMonitoring();
@@ -197,6 +206,11 @@ void setup()
  // sampler.patch(envFollow).patch(sink).patch(out);
  // sampler.trigger();
   //sampler.patch(out);  
+  
+  
+  
+  
+  akhilAV = new akAv();
 }
 
 
@@ -322,6 +336,14 @@ void draw() {
   output.display();
   popMatrix();
  }
+ 
+ 
+ else if (SWOTCH == 3) {
+   
+   akhilAV.akAvDraw();
+   
+   
+ }
 }
 
 void generate2(int amp1, int amp2, int amp3, int amp4, int amp5, int amp6, int amp7, int amp8, int r, int g, int b, int r2, int g2, int b2, int r3, int g3, int b3, int r4, int g4, int b4, int r5, int g5, int b5) {
@@ -439,44 +461,16 @@ void pattern2(int n, int amp, int amp2, int r, int g, int b) {
 
     noFill();
     noStroke();
-    //rotate(elements/i*r);
 
-    //magnify = 100;
 
     float summed1 = summed/50;
-    //ellipse(sin(spacing*i*amp)/cos(spacing*i*amp2)*magnify, sin(spacing*amp*i)*tan(spacing*amp2*i)*magnify, .4, .4);
-
+    
     float x = ((cos(spacing*i*amp*summed1)))/(sin(spacing*i*amp2/summed1))*magnify;
     float y = (sin(spacing*i*amp*summed1))/(sin(spacing*i*2*amp2*summed1))*magnify;
 
     fill(r, g, b, 235);
     ellipse(x, y, .9, .9);
-    //WEIRD BALL THINGYS - make magnify bigger for these
-    float x2 = (sin(spacing*i*amp))*(sin(spacing*i*amp2))*magnify;
-    float y2 = (sin(spacing*amp*2*i))*noise(tan(spacing*amp2*i*2))*magnify;
-    ellipse(x, y, .8, .8);
-
-    //fill(r*1.2, g*1.2, b*1.2, 255);
-    //ellipse(x, y, random(.3, .7), random(.3, .7));*/
-
-    /*
-     strokeWeight(0.5);
-     stroke(r, g, b, 11);
-     line(x, y,  0,0);
-     
-     
-     strokeWeight(0.5);
-     //stroke(r*2, g*2, b*2, 55);
-     //point(x, y);
-     //point(x+0.5, y+0.5);
-     //point(x-0.5, y-0.5);
-     */
-
-
-
-
-
-    //ellipse(cos(spacing*i*amp)*noise(spacing*i*amp2)*magnify, sin(spacing*amp*i)*sin(spacing*amp2*i)*magnify, .4, .4);
+    
 
     popMatrix();
   }
@@ -486,7 +480,7 @@ void keyPressed() {
   
   if (key == 's') {
     SWOTCH++;
-    SWOTCH = SWOTCH%3;
+    SWOTCH = SWOTCH%4;
   }
 }
 
