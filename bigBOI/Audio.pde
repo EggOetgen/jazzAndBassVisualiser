@@ -13,7 +13,7 @@ class Audio {
   
   void run() {
     analysis();
-    //pulse();
+    pulse();
   }
 
   void analysis() {

@@ -7,7 +7,7 @@ import ddf.minim.spi.*;
 
 
 MyAudioSocket mySocket;
-int SWOTCH;
+int SWOTCH, SWOTCHING;
 
 Minim             context;
 AudioInput        in;
@@ -127,6 +127,7 @@ float h = 0; //the multiplier for the noise
 
 void setup()
 {
+  noCursor();
  // size(1280, 800, P3D);
 //  size(1280, 1280, P3D);
   //frameRate(60);
@@ -256,8 +257,12 @@ void setup()
 
 
 void draw() {
+  println(sec);
+  sceneChange();
+  SWOTCHING=SWOTCH%4;
+  //SWOTCH++;
   //ED
-  if(SWOTCH == 0){
+  if(SWOTCHING == 0){
   pushMatrix();
   fft.forward(in.mix);
   //fill(0,0,0,40);
@@ -321,7 +326,7 @@ void draw() {
   popMatrix();
   
   popMatrix();
-  }else if (SWOTCH == 1){
+  }else if (SWOTCHING == 1){
   //BECKY
   background(backR, backG, backB);
 
@@ -370,7 +375,7 @@ void draw() {
 
 
   popMatrix(); 
-  } else if (SWOTCH == 2){
+  } else if (SWOTCHING == 2){
  //SEB
  pushMatrix();
   audio.run();
@@ -379,7 +384,7 @@ void draw() {
  }
  
  //akhil
- else if (SWOTCH == 3) {
+ else if (SWOTCHING == 3) {
    fftA.forward(in.mix);
   //these functions check if a beat has been triggered
   
@@ -629,4 +634,16 @@ void changePat() {
     g5[i] = int(random(50, 255));
     b5[i] = int(random(50, 255));
   }
+}
+int timer=0;
+int milli;
+int sec=20;
+void sceneChange(){
+  milli=sec*1000;
+  if (millis()-timer>milli){
+    timer=millis();
+    SWOTCH=(int)random(0, 3);
+    sec=(int)random(10, 35);
+  }
+  
 }
