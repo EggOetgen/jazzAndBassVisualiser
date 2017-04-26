@@ -100,7 +100,7 @@ void setup()
   context = new Minim(this);
 
   in = context.getLineIn(Minim.MONO, 1024, 44100);
-  in.setGain(5); 
+ // in.setGain(10); 
   in.disableMonitoring();
   out = context.getLineOut();
  
