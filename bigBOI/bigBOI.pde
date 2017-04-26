@@ -129,11 +129,11 @@ void setup()
 
 
 
-  bass = new Particle(width/2, -1);
-  hi = new Particle(width, 1);
+  bass = new Particle(height/2, -1);
+  hi = new Particle(height, 1);
   mid = new Particle[8];
   for ( int i = 0; i < mid.length; i++) {
-  mid[i] = new Particle(width/7, 1);
+  mid[i] = new Particle(height/7, 1);
   }
   
  //BECKY

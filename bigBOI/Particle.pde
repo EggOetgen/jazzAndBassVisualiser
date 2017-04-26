@@ -9,10 +9,11 @@ class Particle {
   color c;
   float posV;
 
+
   Particle(float size_, int rotD_) {
 
     size = size_/2;
-    spread = width/ 500;
+    spread = height/ 500;
     rotD = rotD_;
     
   }
@@ -25,7 +26,7 @@ class Particle {
         stroke(c, alpha);
            //colour adnd aplpha value defined according to fft 
        
-        strokeWeight(4);
+        strokeWeight(5);
                   
         rotate(radians(theta)*rotD);
           //each point is rotated further than the last by an amount set by fft  
@@ -39,12 +40,14 @@ class Particle {
   }
   
   void update(float fft, float env){
+   
     theta = findTheta( fft );
-    alpha = findAlpha( fft );
+    alpha = findAlpha(  fft );
    // println(alpha);
     c = findColour( fft );
    // posV = findPosV (env);
     posV = 10-(env*10);
+  
   }
   
   float findTheta( float x){
@@ -53,7 +56,7 @@ class Particle {
   }
   
   float findAlpha( float x){
-  float alpha_ = map(x, 0, 200, 20, 180);
+  float alpha_ = map(x, 0, 200, 20, 255);
   return alpha_;
   }
   
