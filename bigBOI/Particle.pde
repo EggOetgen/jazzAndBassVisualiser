@@ -20,8 +20,8 @@ class Particle {
 
   void display() {
     pushMatrix();
-    for (int i = 0; i < size; i +=4) {      
-      for ( int j = 0; j < size; j +=4) {
+    for (int i = 0; i < size; i +=2) {      
+      for ( int j = 0; j < size; j +=2) {
 
         stroke(c, alpha);
            //colour adnd aplpha value defined according to fft 

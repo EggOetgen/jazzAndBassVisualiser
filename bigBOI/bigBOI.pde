@@ -262,7 +262,7 @@ void draw() {
   SWOTCHING=SWOTCH%4;
   //SWOTCH++;
   //ED
-  if(SWOTCHING == 0){
+  if(SWOTCHING == 1){
   pushMatrix();
   fft.forward(in.mix);
   //fill(0,0,0,40);
@@ -326,7 +326,7 @@ void draw() {
   popMatrix();
   
   popMatrix();
-  }else if (SWOTCHING == 1){
+  }else if (SWOTCHING == 0){
   //BECKY
   background(backR, backG, backB);
 
